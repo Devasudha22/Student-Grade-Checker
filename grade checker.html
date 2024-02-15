@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade Calculator</title>
+<style>
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f0f0;
+ margin: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ }
+ #calculator {
+ max-width: 400px;
+ width: 100%;
+ background-color: #fff;
+ padding: 30px;
+ border-radius: 12px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ text-align: center;
+ }
+ h2 {
+ color: #333;
+ margin-bottom: 20px;
+ }
+ label {
+ display: block;
+ margin: 15px 0 5px;
+ color: #555;
+ }
+ input {
+ width: calc(100% - 22px);
+ padding: 15px;
+ margin-bottom: 20px;
+ box-sizing: border-box;
+ border: 1px solid #ddd;
+ border-radius: 8px;
+ font-size: 16px;
+ transition: border-color 0.3s;
+ }
+ input:focus {
+ border-color: #4caf50;
+ }
+ button {
+ background-color: #4caf50;
+ color: #fff;
+ padding: 15px;
+ border: none;
+ border-radius: 8px;
+ cursor: pointer;
+ font-size: 18px;
+ width: 100%;
+ display: block;
+ transition: background-color 0.3s;
+ }
+ button:hover {
+ background-color: #45a049;
+ }
+ #result {
+ margin-top: 30px;
+ text-align: center;
+ font-size: 20px;
+ color: #333;
+ }
+ /* Additional Styling */
+ label, input {
+ transition: color 0.3s;
+ }
+ input:hover {
+ border-color: #4caf50;
+ }
+ button:hover {
+ background-color: #5cb85c;
+ }
+</style>
+</head>
+<body>
+<div id="calculator">
+<h2>Grade Calculator</h2>
+<label for="exam">Exam (%):</label>
+<input type="number" id="exam" placeholder="Enter exam grade">
+<label for="assignment">Assignment (%):</label>
+<input type="number" id="assignment" placeholder="Enter assignment grade">
+<label for="project">Project (%):</label>
+<input type="number" id="project" placeholder="Enter project grade">
+<label for="participation">Participation (%):</label>
+<input type="number" id="participation" placeholder="Enter participation grade">
+<button onclick="calculateGrade()">Calculate</button>
+<div id="result"></div>
+</div>
+<script>
+ function calculateGrade() {
+ const examGrade = parseFloat(document.getElementById('exam').value) || 0;
+ const assignmentGrade = parseFloat(document.getElementById('assignment').value) || 0;
+ const projectGrade = parseFloat(document.getElementById('project').value) || 0;
+ const participationGrade = parseFloat(document.getElementById('participation').value) || 
+0;
+ const totalPercentage = examGrade + assignmentGrade + projectGrade + 
+participationGrade;
+ if (totalPercentage > 100) {
+ alert("Total percentage cannot exceed 100%");
+ return;
+ }
+ let grade = '';
+ if (totalPercentage >= 90) {
+ grade = 'A';
+ } else if (totalPercentage >= 80) {
+ grade = 'B';
+ } else if (totalPercentage >= 70) {
+ grade = 'C';
+ } else if (totalPercentage >= 60) {
+ grade = 'D';
+ } else {
+ grade = 'F';
+ }
+ document.getElementById('result').innerHTML = `Your grade is: 
+<strong>${grade}</strong>`;
+ }
+</script>
+</body>
+</html>
